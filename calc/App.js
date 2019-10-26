@@ -17,14 +17,7 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <MSProvider>
-          <MSConsumer>
-            {({ storeVar1, storeVar2 }) => ( */}
         <MainField />
-        {/* )}
-          </MSConsumer>
-        </MSProvider> */}
-        <Text>Open up App.js to start working on your app!</Text>
       </View>
     );
   }
@@ -33,8 +26,6 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    paddingVertical: 50,
-    paddingHorizontal: 15
+    backgroundColor: "#fbf5e8"
   }
 });
