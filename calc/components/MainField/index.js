@@ -1,10 +1,20 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, Button, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  TouchableOpacity,
+  Platform,
+  Dimensions
+} from "react-native";
 
 let colorAccent = "#e25a53";
 let colorPrimary = "#a4d9d6";
 let colorSecondary = "#fdb35d";
 let colorBackground = "#fbf5e8";
+
+const dim = Dimensions.get("window");
 
 class MainField extends Component {
   constructor(props) {
@@ -62,7 +72,8 @@ class MainField extends Component {
       colorAccent,
       colorBackground,
       colorPrimary,
-      colorSecondary
+      colorSecondary,
+      value
     } = this.state;
     const val = parseInt(this.state.value);
     const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -256,10 +267,11 @@ class MainField extends Component {
                 key={i}
                 style={{ ...operand, backgroundColor: colorAccent }}
                 onPress={() => {
-                  this.setState({
-                    value: this.state.value.concat(it),
-                    isRes: false
-                  });
+                  value &&
+                    this.setState({
+                      value: this.state.value.concat(it),
+                      isRes: false
+                    });
                 }}>
                 <Text
                   style={{
@@ -284,8 +296,9 @@ const Wrap = {
   height: "100%",
   justifyContent: "flex-end",
   paddingHorizontal: 15,
-  paddingVertical: 50,
-  paddingTop: 110
+  // paddingVertical: 30
+  paddingBottom: dim.height > 800 ? 50 : 20,
+  paddingTop: dim.height > 800 ? 120 : 100
 };
 const number = {
   width: "30%",
